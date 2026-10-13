@@ -1,0 +1,1103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1a1a1a;
+    --secondary: #2d2d2d;
+    --accent: #f5a623;
+    --text: #ffffff;
+    --text-light: #b0b0b0;
+    --border: #404040;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #10151d;
+    background-image:
+        radial-gradient(ellipse at 12% 18%, rgba(15, 160, 195, 0.56), transparent 46%),
+        radial-gradient(ellipse at 88% 72%, rgba(245, 137, 32, 0.48), transparent 44%),
+        linear-gradient(115deg, rgba(8, 13, 21, 0.68) 0%, rgba(12, 18, 28, 0.56) 52%, rgba(24, 17, 13, 0.6) 100%),
+        url("https://upload.wikimedia.org/wikipedia/commons/e/e6/Gears_-_Thomas_Claveirole.jpg");
+    background-position: center, center, center, center;
+    background-size: cover, cover, cover, cover;
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+.section-stage {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
+}
+
+.section-stage > section[hidden] {
+    display: none !important;
+}
+
+/* Navigasyon */
+.navbar {
+    background-color: rgba(27, 31, 39, 0.94);
+    backdrop-filter: blur(12px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent);
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+.nav-link[aria-current="page"] {
+    color: var(--accent);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Hero Bölümü */
+.hero {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 3rem;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #d8890b;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(245, 166, 35, 0.3);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-icon {
+    font-size: 15rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Blog Bölümü */
+.blog {
+    padding: 5rem 2rem;
+    background-color: rgba(16, 20, 28, 0.68);
+}
+
+.blog h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    align-items: start;
+    gap: 2rem;
+}
+
+.blog-card {
+    background-color: var(--secondary);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(245, 166, 35, 0.2);
+    border-left-color: var(--accent);
+}
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.category {
+    background-color: var(--primary);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.date {
+    color: var(--text-light);
+}
+
+.blog-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.blog-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--accent);
+    font: inherit;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.read-more:hover {
+    margin-left: 5px;
+}
+
+.blog-detail {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.blog-detail[hidden] {
+    display: none;
+}
+
+.blog-detail h4 {
+    margin: 0.9rem 0 0.35rem;
+    color: var(--accent);
+}
+
+.blog-detail p {
+    margin: 0.5rem 0 0;
+}
+
+/* Kategoriler Bölümü */
+.kategoriler {
+    padding: 5rem 2rem;
+    background-color: rgba(35, 39, 47, 0.7);
+}
+
+.kategoriler h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.kategoriler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.kategori-item {
+    background-color: var(--primary);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border);
+}
+
+.kategori-item:hover {
+    border-color: var(--accent);
+    background-color: rgba(245, 166, 35, 0.05);
+    transform: scale(1.05);
+}
+
+.kategori-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.kategori-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.kategori-item p {
+    color: var(--text-light);
+}
+
+/* OBD-II Şanzıman Arıza Kodları */
+.fault-codes {
+    padding: 5rem 2rem;
+    background-color: rgba(35, 39, 47, 0.72);
+}
+
+.fault-codes h2 {
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.fault-codes-intro {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.fault-search-label,
+.fault-search,
+.fault-count,
+.fault-empty {
+    display: block;
+    width: 100%;
+    max-width: 1050px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.fault-search-label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.fault-search {
+    margin-bottom: 1rem;
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--text);
+    font: inherit;
+}
+
+.fault-search:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.fault-count {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.fault-table-wrap {
+    max-width: 1050px;
+    margin: 0 auto 1.5rem;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.fault-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    background-color: var(--primary);
+}
+
+.fault-table th,
+.fault-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.fault-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #242424;
+    color: var(--accent);
+}
+
+.fault-table tbody th {
+    width: 120px;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.fault-table tbody tr:hover {
+    background-color: var(--secondary);
+}
+
+.fault-table tbody tr:last-child th,
+.fault-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.fault-empty {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.fault-caveat {
+    max-width: 1050px;
+    margin: 0 auto;
+    color: var(--text-light);
+    font-size: 0.92rem;
+}
+
+.fault-sources {
+    max-width: 1050px;
+    margin: 1.5rem auto 0;
+}
+
+.fault-sources h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.fault-sources ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+}
+
+.fault-sources a {
+    color: var(--accent);
+}
+
+/* Araç Markaları Bölümü */
+.brands {
+    padding: 5rem 2rem;
+    background-color: rgba(16, 20, 28, 0.68);
+}
+
+.brands h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.brands-intro,
+.brands-note {
+    color: var(--text-light);
+    text-align: center;
+}
+
+.brands-intro {
+    margin-bottom: 2rem;
+}
+
+.brands-search-label {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto 0.5rem;
+    font-weight: 600;
+}
+
+.brands-search {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+    padding: 0.9rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    background-color: var(--secondary);
+    color: var(--text);
+    font: inherit;
+}
+
+.brands-search:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.brands-count {
+    max-width: 600px;
+    margin: 0 auto 0.5rem;
+    color: var(--text-light);
+}
+
+.brands-list {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    list-style: none;
+}
+
+.brands-list-wide {
+    max-width: 1120px;
+}
+
+.brands-list > li {
+    border-bottom: 1px solid var(--border);
+}
+
+.brands-list > li:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.brand-toggle {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.brand-toggle:hover,
+.brand-toggle[aria-expanded="true"] {
+    color: var(--accent);
+    background-color: var(--secondary);
+}
+
+.brand-toggle::after {
+    content: "+";
+    float: right;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.brand-toggle[aria-expanded="true"]::after {
+    content: "−";
+}
+
+.brand-models {
+    padding: 0.85rem 1rem 1rem;
+    background-color: var(--secondary);
+    color: var(--text-light);
+}
+
+.brand-models h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.transmission-caveat {
+    margin: 0 0 0.65rem;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.brand-models ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.brand-models .model-entry {
+    padding: 0;
+    border: 0;
+}
+
+.model-toggle {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--primary);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.model-toggle:hover,
+.model-toggle[aria-expanded="true"] {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.model-transmission {
+    margin-top: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: var(--primary);
+}
+
+.model-transmission h4 {
+    margin-bottom: 0.35rem;
+    color: var(--text);
+}
+
+.gearbox-code {
+    margin: 0 0 0.65rem;
+    color: var(--accent);
+}
+
+.model-transmission p {
+    margin: 0;
+}
+
+.transmission-options {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.transmission-options li {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.transmission-options strong {
+    color: var(--text);
+}
+
+.transmission-options p {
+    margin: 0;
+}
+
+.model-transmission a {
+    margin-top: 0.5rem;
+}
+
+.brand-models li {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.brand-models p {
+    margin: 0;
+}
+
+.brand-models a {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--accent);
+}
+
+.fuel-type-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.fuel-type-columns-single {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.fuel-type-column {
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--primary);
+}
+
+.fuel-type-column h4 {
+    margin: 0 0 0.75rem;
+    color: var(--accent);
+}
+
+.brand-models .fuel-type-column > ul {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+.brand-models .fuel-type-column > ul > li {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--secondary);
+}
+
+.fuel-model-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.fuel-type-column h5 {
+    margin: 0 0 0.5rem;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.fuel-model-title a {
+    flex: 0 0 auto;
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+.brand-models .fuel-type-column ul ul {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+}
+
+.brand-models .fuel-type-column ul ul li {
+    padding: 0;
+    border: 0;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.fuel-type-columns-other {
+    margin-top: 1rem;
+}
+
+.fuel-data-note {
+    margin-top: 1rem !important;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.fuel-data-sources {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.fuel-data-sources summary {
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.fuel-data-sources ul {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    padding-left: 1.25rem;
+}
+
+.fuel-data-sources a {
+    color: var(--text-light);
+    text-decoration: underline;
+}
+
+.brands-note {
+    font-size: 0.9rem;
+}
+
+.brands-empty {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--text-light);
+}
+
+.background-image-credit {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+}
+
+.background-image-credit a {
+    color: var(--text-light);
+    text-decoration: underline;
+    text-decoration-color: #777;
+}
+
+.transmission-faults {
+    padding: 3.5rem 1rem;
+    background: rgba(13, 18, 26, 0.82);
+}
+
+.transmission-faults .container {
+    max-width: 1100px;
+}
+
+.transmission-faults h2 {
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.transmission-faults-intro {
+    max-width: 760px;
+    margin: 0 auto 1.5rem;
+    color: var(--text-light);
+    text-align: center;
+}
+
+.transmission-faults-toolbar {
+    display: grid;
+    grid-template-columns: auto minmax(200px, 2fr) auto minmax(200px, 1fr);
+    align-items: center;
+    gap: 0.65rem 0.8rem;
+    margin: 0 auto 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(35, 42, 53, 0.94);
+}
+
+.transmission-faults-toolbar label {
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.transmission-faults-toolbar input,
+.transmission-faults-toolbar select {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid #596273;
+    border-radius: 6px;
+    background: #151b24;
+    color: var(--text);
+    font: inherit;
+}
+
+.transmission-faults-toolbar input:focus,
+.transmission-faults-toolbar select:focus {
+    border-color: var(--accent);
+    outline: 2px solid rgba(245, 166, 35, 0.2);
+}
+
+.transmission-faults-count {
+    margin: 0 0 0.85rem;
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+.transmission-faults-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.transmission-fault-card {
+    min-width: 0;
+    padding: 1.15rem;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    background: rgba(34, 41, 51, 0.96);
+}
+
+.transmission-fault-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.transmission-fault-number {
+    display: inline-grid;
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(245, 166, 35, 0.16);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.transmission-fault-card h3 {
+    margin: 0.1rem 0 0.35rem;
+    color: var(--text);
+    font-size: 1.15rem;
+    line-height: 1.35;
+}
+
+.transmission-fault-examples {
+    margin: 0.2rem 0 1rem 2.75rem;
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+.transmission-fault-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.transmission-fault-item {
+    min-width: 0;
+    padding: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    background: rgba(13, 18, 26, 0.62);
+}
+
+.transmission-fault-item h4 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    margin: 0 0 0.65rem;
+    color: var(--accent);
+    font-size: 0.98rem;
+    line-height: 1.4;
+}
+
+.transmission-fault-issue-number {
+    flex: 0 0 auto;
+    color: var(--text-light);
+    font-size: 0.82rem;
+}
+
+.transmission-fault-item p {
+    margin: 0.45rem 0 0;
+    color: #dedede;
+    font-size: 0.86rem;
+    line-height: 1.55;
+}
+
+.transmission-fault-item p strong {
+    color: var(--text);
+}
+
+.transmission-faults-caveat {
+    margin: 1rem 0 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(245, 166, 35, 0.35);
+    border-radius: 7px;
+    background: rgba(245, 166, 35, 0.08);
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+.transmission-faults .fault-sources {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(34, 41, 51, 0.75);
+}
+
+.transmission-faults .fault-sources h3 {
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.transmission-faults .fault-sources ul {
+    display: grid;
+    gap: 0.45rem;
+    padding-left: 1.2rem;
+}
+
+.transmission-faults .fault-sources a {
+    color: var(--accent);
+    font-size: 0.88rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .fuel-type-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        min-height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .tech-icon {
+        font-size: 8rem;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 1rem 1rem;
+        background-color: var(--secondary);
+        border-bottom: 2px solid var(--border);
+    }
+
+    .nav-menu.active .nav-link {
+        display: block;
+        padding: 0.75rem 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .blog h2,
+    .kategoriler h2,
+    .fault-codes h2,
+    .transmission-faults h2,
+    .brands h2 {
+        font-size: 1.8rem;
+    }
+
+    .transmission-faults {
+        padding: 3rem 1rem;
+    }
+
+    .transmission-faults-toolbar {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+        padding: 0.85rem;
+    }
+
+    .transmission-fault-items {
+        grid-template-columns: 1fr;
+    }
+
+    .transmission-fault-examples {
+        margin-left: 0;
+    }
+
+    .transmission-fault-card {
+        padding: 0.9rem;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .kategoriler-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .tech-icon {
+        font-size: 5rem;
+    }
+
+    .kategoriler-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+}

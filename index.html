@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Otomatik şanzımanlar, bakım önerileri ve arıza belirtileri hakkında anlaşılır bilgiler.">
+    <title>Şanzıman Rehberi - Şanzıman Hakkında Bilgilendirici Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigasyon Çubuğu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Şanzıman Rehberi</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Ana Sayfa</a></li>
+                <li><a href="#blog" class="nav-link">Rehberler</a></li>
+                <li><a href="#kategoriler" class="nav-link">Konular</a></li>
+                <li><a href="#ariza-kodlari" class="nav-link">Arıza Kodları</a></li>
+                <li><a href="#sanziman-arizalari" class="nav-link">Şanzıman Arızaları</a></li>
+                <li><a href="#markalar" class="nav-link">Araç Markaları</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Menüyü aç/kapat" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="section-stage" id="section-stage">
+    <!-- Hero Bölümü -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Şanzımanınızı Daha Yakından Tanıyın</h1>
+            <p>Otomatik şanzımanların çalışma prensipleri, bakım önerileri ve arıza belirtileri hakkında anlaşılır bilgiler.</p>
+            <button class="cta-btn">Rehberleri Keşfet</button>
+        </div>
+        <div class="hero-image">
+            <div class="tech-icon" aria-hidden="true">⚙️</div>
+        </div>
+    </section>
+
+    <!-- Blog Bölümü -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <h2>Şanzıman Rehberleri</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <span class="category">Temel Bilgiler</span>
+                        <span class="date">1 Ekim 2026</span>
+                    </div>
+                    <h3>Şanzıman Ne İşe Yarar?</h3>
+                    <p>Motor gücünü tekerleklere aktaran şanzımanın temel görevini ve vites oranlarının neden değiştiğini öğrenin.</p>
+                    <button class="read-more" type="button" aria-expanded="false" aria-controls="blog-detail-purpose">Devamını Oku</button>
+                    <div class="blog-detail" id="blog-detail-purpose" hidden>
+                        <p>Motor verimli çalışabilmek için farklı devir aralıklarına ihtiyaç duyar. Şanzıman, vites oranlarını değiştirerek motor torkunu ve tekerlek hızını sürüş koşullarına uyarlar; geri vites ve boştaki çalışma da bu sistem üzerinden sağlanır.</p>
+                        <p>Otomatik şanzımanda vites oranını sürücü yerine şanzıman kontrol sistemi seçer. Şanzıman, motor gücünü sürüş koşullarına uygun oranda tekerleklere iletir.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <span class="category">Karşılaştırma</span>
+                        <span class="date">7 Ekim 2026</span>
+                    </div>
+                    <h3>Otomatik ve Yarı Otomatik Şanzıman Farkları</h3>
+                    <p>Vites geçişlerini sistemin nasıl yaptığına ve “yarı otomatik” adının farklı şanzıman türleri için kullanılabilmesine göz atın.</p>
+                    <button class="read-more" type="button" aria-expanded="false" aria-controls="blog-detail-auto-semi">Devamını Oku</button>
+                    <div class="blog-detail" id="blog-detail-auto-semi" hidden>
+                        <h4>Tam otomatik şanzıman</h4>
+                        <p>Sürüş sırasında vites oranını ve geçiş zamanını şanzıman kontrol sistemi belirler; sürücünün debriyaj pedalı kullanması gerekmez. Tork konvertörlü otomatikler bu türün yaygın örneklerindendir. CVT ve çift kavramalı sistemler de vitesleri sürücü yerine kontrol sistemi yönettiği için otomatik şanzıman türleri arasında sayılır.</p>
+                        <h4>Yarı otomatik (robotize/AMT) şanzıman</h4>
+                        <p>Bu ad genellikle debriyajı ve vites seçimini elektrikli ya da elektrohidrolik aktüatörlerin yaptığı sistemler için kullanılır. Sürücü çoğunlukla debriyaj pedalı kullanmaz; vitesi otomatik moda bırakabilir veya bazı araçlarda kendisi seçebilir. Vites geçişinde kısa bir güç kesintisi ya da belirgin geçiş hissi tasarımın çalışma karakteri olabilir.</p>
+                        <h4>Önemli adlandırma farkı</h4>
+                        <p>“Yarı otomatik” ifadesi üreticiler ve ilanlarda her zaman aynı teknik anlamda kullanılmaz. Çift kavramalı (DCT/DSG) şanzımanlar da bazen bu adla tanıtılsa da ayrı bir çift kavramalı otomatik tasarımdır; klasik robotize AMT ile aynı sistem değildir. Aracın gerçek şanzıman türünü model yılı, motor ve şanzıman koduyla doğrulayın.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <span class="category">Bakım</span>
+                        <span class="date">25 Eylül 2026</span>
+                    </div>
+                    <h3>Şanzıman Yağı Ne Zaman Değişir?</h3>
+                    <p>Yağ değişim aralığının araç ve üreticiye göre neden değiştiğini, bakım kılavuzunun önemini keşfedin.</p>
+                    <button class="read-more" type="button" aria-expanded="false" aria-controls="blog-detail-fluid">Devamını Oku</button>
+                    <div class="blog-detail" id="blog-detail-fluid" hidden>
+                        <p>Tek bir değişim aralığı bütün şanzımanlara uymaz. Bazı üreticiler belirli kullanım koşulları için periyodik değişim ister; bazıları farklı bakım planları uygular. Ağır trafik, yüksek sıcaklık, sık römork çekme gibi koşullar bakım gereksinimini etkileyebilir.</p>
+                        <p>Araç kitapçığındaki ve şanzıman üreticisinin belirttiği yağ spesifikasyonu ile seviye ölçüm prosedürü esas alınmalıdır. Yanlış yağ, yanlış seviye veya uygun olmayan makineyle yapılan işlem arızaya yol açabilir. Bakım geçmişi belirsizse önce şanzıman kodu ve mevcut durum uzman tarafından kontrol edilmelidir.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <span class="category">Arıza Belirtileri</span>
+                        <span class="date">22 Eylül 2026</span>
+                    </div>
+                    <h3>Şanzıman Arızası Nasıl Anlaşılır?</h3>
+                    <p>Vites geçişinde sarsıntı, gecikme veya olağandışı sesler gibi belirtilerin ne anlama gelebileceğini öğrenin.</p>
+                    <button class="read-more" type="button" aria-expanded="false" aria-controls="blog-detail-symptoms">Devamını Oku</button>
+                    <div class="blog-detail" id="blog-detail-symptoms" hidden>
+                        <p>Vites geçişinde yeni başlayan sertlik veya gecikme, kayma hissi, uyarı lambası, yanık kokusu, yağ kaçağı ve normal dışı uğultu kontrol gerektiren belirtilerdir. Belirtinin soğukken mi sıcakken mi, hangi viteste ve hangi hız/yükte oluştuğunu not etmek teşhise yardımcı olur.</p>
+                        <p>Benzer belirtiler motor teklemesi, akü/şarj sorunu, aks veya takozlardan da kaynaklanabilir. Arıza kodunu okumak ilk adımdır; tek başına kod parça değişimi ya da revizyon kararı verdirmez. Araç güvenli sürüşü etkileyen biçimde vitesten çıkıyor, aşırı ısınıyor veya ciddi ses yapıyorsa kullanmayı bırakıp servis desteği alın.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <span class="category">Şanzıman Türleri</span>
+                        <span class="date">19 Eylül 2026</span>
+                    </div>
+                    <h3>CVT Şanzıman Nasıl Çalışır?</h3>
+                    <p>Kademesiz vites oranı sunan CVT sisteminin çalışma mantığını ve sürüşteki özelliklerini tanıyın.</p>
+                    <button class="read-more" type="button" aria-expanded="false" aria-controls="blog-detail-cvt">Devamını Oku</button>
+                    <div class="blog-detail" id="blog-detail-cvt" hidden>
+                        <p>Kayışlı veya zincirli CVT’de değişken çaplı kasnaklar vites oranını kademesiz biçimde değiştirir. Bu sayede sistem motoru uygun devirde tutabilir; hızlanmada motor devri sabit kalıyor gibi duyulabilir. Bu karakter tek başına arıza göstergesi değildir.</p>
+                        <p>CVT’ler kendi aralarında farklıdır ve her otomatik şanzıman CVT değildir. Üreticinin belirttiği özel sıvı ve bakım prosedürü kullanılmalıdır; klasik otomatik şanzıman yağı uygun olmayabilir. Hibrit e-CVT ise çoğunlukla farklı, güç bölüştürücülü bir transaks düzenidir; kayışlı CVT ile aynı yapı değildir.</p>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <span class="category">Şanzıman Türleri</span>
+                        <span class="date">16 Eylül 2026</span>
+                    </div>
+                    <h3>Çift Kavramalı Şanzıman (DCT) Nedir?</h3>
+                    <p>Çift kavramalı sistemlerin vites geçişlerini nasıl gerçekleştirdiğini ve temel özelliklerini inceleyin.</p>
+                    <button class="read-more" type="button" aria-expanded="false" aria-controls="blog-detail-dct">Devamını Oku</button>
+                    <div class="blog-detail" id="blog-detail-dct" hidden>
+                        <p>DCT’de iki kavrama, genellikle tek ve çift vites gruplarını ayrı ayrı yönetir. Sistem sıradaki vitesi önceden hazırlayabildiği için uygun koşullarda hızlı geçiş sağlayabilir. Kuru ve yağ içinde çalışan (ıslak) tasarımlar bulunur; kullanım ve bakım gereksinimleri aynı değildir.</p>
+                        <p>Dur-kalkta tekrarlayan kavrama, yokuşta aracı gazla sabit tutma ve yoğun manevra ısıyı artırabilir. Titreme veya geçiş gecikmesi kavrama, adaptasyon, mekatronik, elektrik beslemesi ya da motor kaynaklı olabilir; belirti tek başına hangi parçanın arızalı olduğunu göstermez. Kesin kutu koduna uygun teşhis ve üretici prosedürü gerekir.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kategoriler Bölümü -->
+    <section class="kategoriler" id="kategoriler">
+        <div class="container">
+            <h2>Konular</h2>
+            <div class="kategoriler-grid">
+                <div class="kategori-item">
+                    <div class="kategori-icon">⚙️</div>
+                    <h3>Şanzıman Temelleri</h3>
+                    <p>Çalışma prensipleri</p>
+                </div>
+                <div class="kategori-item">
+                    <div class="kategori-icon">🔄</div>
+                    <h3>Otomatik Şanzıman</h3>
+                    <p>Otomatik sistemler</p>
+                </div>
+                <div class="kategori-item">
+                    <div class="kategori-icon">🛠️</div>
+                    <h3>Bakım</h3>
+                    <p>Yağ ve kullanım</p>
+                </div>
+                <div class="kategori-item">
+                    <div class="kategori-icon">⚠️</div>
+                    <h3>Arıza Belirtileri</h3>
+                    <p>Kontrol edilmesi gerekenler</p>
+                </div>
+                <div class="kategori-item">
+                    <div class="kategori-icon">🔧</div>
+                    <h3>Şanzıman Türleri</h3>
+                    <p>CVT, DCT ve diğerleri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBD-II Şanzıman Arıza Kodları -->
+    <section class="fault-codes" id="ariza-kodlari">
+        <div class="container">
+            <h2>Yaygın Şanzıman Arıza Kodları</h2>
+            <p class="fault-codes-intro">Yaygın OBD-II aktarma organı kodlarını, genel anlamlarını ve ilk kontrol/olası çözüm adımlarını inceleyin.</p>
+            <label class="fault-search-label" for="fault-search">Kod veya açıklama ara</label>
+            <input class="fault-search" id="fault-search" type="search" placeholder="Örnek: P0700 veya basınç..." autocomplete="off">
+            <p class="fault-count" aria-live="polite"></p>
+            <div class="fault-table-wrap">
+                <table class="fault-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Arıza kodu</th>
+                            <th scope="col">Genel anlamı</th>
+                            <th scope="col">Kontrol / olası çözüm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">P0700</th><td>Şanzıman kontrol sisteminde arıza kaydı var; TCM genellikle ek kodu saklar. Tek başına arızalı parçayı belirtmez.</td></tr>
+                        <tr><th scope="row">P0701</th><td>Şanzıman kontrol sistemi çalışma aralığı veya performansı beklenen sınırların dışında.</td></tr>
+                        <tr><th scope="row">P0702</th><td>Şanzıman kontrol sisteminde elektriksel arıza algılandı.</td></tr>
+                        <tr><th scope="row">P0705</th><td>Şanzıman vites konum sensörü/devresi (range/PRNDL) sinyali hatalı veya geçersiz.</td></tr>
+                        <tr><th scope="row">P0706</th><td>Vites konum sensörü sinyali beklenen aralık veya performansla uyuşmuyor.</td></tr>
+                        <tr><th scope="row">P0707</th><td>Vites konum sensörü devresinden düşük sinyal algılandı.</td></tr>
+                        <tr><th scope="row">P0708</th><td>Vites konum sensörü devresinden yüksek sinyal algılandı.</td></tr>
+                        <tr><th scope="row">P0709</th><td>Vites konum sensörü sinyali kesintili veya kararsız.</td></tr>
+                        <tr><th scope="row">P0714</th><td>Şanzıman yağı sıcaklık sensörü A sinyali kesintili veya kararsız.</td></tr>
+                        <tr><th scope="row">P0710</th><td>Şanzıman yağı sıcaklık sensörü A devresinde elektriksel arıza.</td></tr>
+                        <tr><th scope="row">P0711</th><td>Şanzıman yağı sıcaklık sensörü A sinyali aralık veya performans açısından uyumsuz.</td></tr>
+                        <tr><th scope="row">P0712</th><td>Şanzıman yağı sıcaklık sensörü A devresinde düşük sinyal.</td></tr>
+                        <tr><th scope="row">P0713</th><td>Şanzıman yağı sıcaklık sensörü A devresinde yüksek sinyal.</td></tr>
+                        <tr><th scope="row">P0715</th><td>Giriş/türbin mili hız sensörü A devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0716</th><td>Giriş/türbin mili hız sensörü A sinyali aralık veya performans açısından uyumsuz.</td></tr>
+                        <tr><th scope="row">P0717</th><td>Giriş/türbin mili hız sensörü A devresinden sinyal alınmıyor.</td></tr>
+                        <tr><th scope="row">P0718</th><td>Giriş/türbin mili hız sensörü A sinyali kesintili veya kararsız.</td></tr>
+                        <tr><th scope="row">P0720</th><td>Çıkış mili hız sensörü devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0721</th><td>Çıkış mili hız sensörü sinyali aralık veya performans açısından uyumsuz.</td></tr>
+                        <tr><th scope="row">P0722</th><td>Çıkış mili hız sensörü devresinden sinyal alınmıyor.</td></tr>
+                        <tr><th scope="row">P0723</th><td>Çıkış mili hız sensörü sinyali kesintili veya kararsız.</td></tr>
+                        <tr><th scope="row">P0218</th><td>Şanzıman yağı sıcaklığı aşırı yüksek.</td></tr>
+                        <tr><th scope="row">P0730</th><td>Kontrol ünitesinin hesapladığı vites oranı beklenen oranla uyuşmuyor.</td></tr>
+                        <tr><th scope="row">P0731</th><td>1. vites için yanlış dişli oranı algılandı.</td></tr>
+                        <tr><th scope="row">P0732</th><td>2. vites için yanlış dişli oranı algılandı.</td></tr>
+                        <tr><th scope="row">P0733</th><td>3. vites için yanlış dişli oranı algılandı.</td></tr>
+                        <tr><th scope="row">P0734</th><td>4. vites için yanlış dişli oranı algılandı.</td></tr>
+                        <tr><th scope="row">P0735</th><td>5. vites için yanlış dişli oranı algılandı.</td></tr>
+                        <tr><th scope="row">P0736</th><td>Geri vites için yanlış dişli oranı algılandı.</td></tr>
+                        <tr><th scope="row">P0740</th><td>Tork konvertörü kilitleme kavraması (TCC) devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0741</th><td>TCC kilitleme performansı beklenen düzeyde değil veya kavrama devreye girmiyor.</td></tr>
+                        <tr><th scope="row">P0742</th><td>TCC kilitleme kavraması takılı kalmış olabilir.</td></tr>
+                        <tr><th scope="row">P0743</th><td>TCC elektrik devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0744</th><td>TCC devresinde kesintili veya kararsız çalışma algılandı.</td></tr>
+                        <tr><th scope="row">P0745</th><td>Basınç kontrol solenoidi A devresinde/işlevinde arıza.</td></tr>
+                        <tr><th scope="row">P0746</th><td>Basınç kontrol solenoidi A performansı düşük veya kapalı konumda takılmış olabilir.</td></tr>
+                        <tr><th scope="row">P0747</th><td>Basınç kontrol solenoidi A açık konumda takılmış olabilir.</td></tr>
+                        <tr><th scope="row">P0748</th><td>Basınç kontrol solenoidi A elektrik devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0750</th><td>Vites değiştirme solenoidi A devresinde/işlevinde arıza.</td></tr>
+                        <tr><th scope="row">P0751</th><td>Vites solenoidi A performansı düşük veya solenoid kapalı konumda takılmış olabilir.</td></tr>
+                        <tr><th scope="row">P0752</th><td>Vites solenoidi A açık konumda takılmış olabilir.</td></tr>
+                        <tr><th scope="row">P0753</th><td>Vites solenoidi A elektrik devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0754</th><td>Vites solenoidi A devresinde kesintili veya kararsız arıza.</td></tr>
+                        <tr><th scope="row">P0755</th><td>Vites değiştirme solenoidi B devresinde/işlevinde arıza.</td></tr>
+                        <tr><th scope="row">P0756</th><td>Vites solenoidi B performansı düşük veya kapalı konumda takılmış olabilir.</td></tr>
+                        <tr><th scope="row">P0757</th><td>Vites solenoidi B açık konumda takılmış olabilir.</td></tr>
+                        <tr><th scope="row">P0758</th><td>Vites solenoidi B elektrik devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0760</th><td>Vites değiştirme solenoidi C devresinde/işlevinde arıza.</td></tr>
+                        <tr><th scope="row">P0765</th><td>Vites değiştirme solenoidi D devresinde/işlevinde arıza.</td></tr>
+                        <tr><th scope="row">P0770</th><td>Vites değiştirme solenoidi E devresinde/işlevinde arıza.</td></tr>
+                        <tr><th scope="row">P0780</th><td>Vites değiştirme işlemi beklenen şekilde gerçekleşmiyor.</td></tr>
+                        <tr><th scope="row">P0796</th><td>Basınç kontrol solenoidi C performansında sorun veya kapalı konumda takılma algılandı.</td></tr>
+                        <tr><th scope="row">P0841</th><td>Şanzıman yağı basınç sensörü/anahtarı A sinyali aralık veya performans açısından uyumsuz.</td></tr>
+                        <tr><th scope="row">P0840</th><td>Şanzıman yağı basınç sensörü/anahtarı A devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0842</th><td>Şanzıman yağı basınç sensörü/anahtarı A devresinden düşük sinyal.</td></tr>
+                        <tr><th scope="row">P0843</th><td>Şanzıman yağı basınç sensörü/anahtarı A devresinden yüksek sinyal.</td></tr>
+                        <tr><th scope="row">P0867</th><td>Şanzıman yağı basınç sisteminde arıza.</td></tr>
+                        <tr><th scope="row">P0868</th><td>Şanzıman basıncı / yağ basıncı düşük.</td></tr>
+                        <tr><th scope="row">P0869</th><td>Şanzıman yağı basıncı yüksek.</td></tr>
+                        <tr><th scope="row">P0880</th><td>Şanzıman kontrol modülü güç giriş sinyali devresinde arıza.</td></tr>
+                        <tr><th scope="row">P0882</th><td>Şanzıman kontrol modülü besleme girişinde düşük voltaj algılandı.</td></tr>
+                        <tr><th scope="row">P0883</th><td>Şanzıman kontrol modülü güç girişinde yüksek voltaj algılandı.</td></tr>
+                        <tr><th scope="row">P0894</th><td>Şanzıman bileşeninde kayma algılandı.</td></tr>
+                        <tr><th scope="row">P0897</th><td>Şanzıman yağı bozulmuş veya özelliğini yitirmiş olabilir.</td></tr>
+                        <tr><th scope="row">P0613</th><td>Şanzıman kontrol modülü (TCM) işlemci arızası.</td></tr>
+                        <tr><th scope="row">P0962</th><td>Basınç kontrol solenoidi A kontrol devresinde düşük sinyal.</td></tr>
+                        <tr><th scope="row">P0973</th><td>Vites solenoidi A kontrol devresinde düşük sinyal.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="fault-empty" hidden>Bu aramayla eşleşen arıza kodu bulunamadı.</p>
+            <p class="fault-caveat">Çözüm sütunu genel teşhis sırasıdır, kesin tamir talimatı değildir. Kod tek başına türbin revizyonu, şalter/solenoid değişimi veya şanzıman revizyonu kararı verdirmez. Önce araç özelinde tüm modüller taranmalı ve üretici prosedürü izlenmelidir; revizyon ancak mekanik hasar testlerle doğrulanırsa değerlendirilir. Yanlış yağ/flush uygulaması hasarı artırabilir.</p>
+            <div class="fault-sources">
+                <h3>Kaynaklar</h3>
+                <ul>
+                    <li><a href="https://www.sae.org/standards/content/j2012_202303/" target="_blank" rel="noopener noreferrer">SAE J2012 — Diagnostic Trouble Code Definitions</a></li>
+                    <li><a href="https://www.epa.gov/vehicle-and-fuel-emissions-testing/onboard-diagnostics-obd" target="_blank" rel="noopener noreferrer">U.S. EPA — Onboard Diagnostics (OBD)</a></li>
+                    <li><a href="https://www.obd-codes.com/transmission/" target="_blank" rel="noopener noreferrer">OBD-Codes — Transmission Trouble Codes</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="transmission-faults" id="sanziman-arizalari">
+        <div class="container">
+            <h2>Şanzıman Türüne Göre Yaygın Arızalar</h2>
+            <p class="transmission-faults-intro">Önce şanzıman türünü seçin; her kartta yaygın belirtileri, olası nedenleri ve kontrol sırasını adım adım inceleyin.</p>
+            <div class="transmission-faults-toolbar">
+                <label for="transmission-fault-search">Şanzıman veya belirti ara</label>
+                <input id="transmission-fault-search" type="search" placeholder="Örn. Golf DSG, titreme, CVT" autocomplete="off">
+                <label for="transmission-fault-type">Şanzıman türü</label>
+                <select id="transmission-fault-type">
+                    <option value="">Tüm şanzıman türleri</option>
+                </select>
+            </div>
+            <p class="transmission-faults-count" aria-live="polite"></p>
+            <div class="transmission-faults-list" id="transmission-faults-list" aria-live="polite"></div>
+            <p class="transmission-faults-caveat">Bunlar olası ve yaygın belirti/arıza başlıklarıdır; her araçta görüleceği veya belirli bir parçanın bozuk olduğu anlamına gelmez. Aynı modelin şanzımanı motor, yıl ve pazara göre değişebilir. VIN ve şanzıman etiketiyle kutu kodunu doğrulatın; OEM arıza kodları üretici ve yazılım sürümüne göre farklılık gösterebilir. Yalnızca belirti veya kodla parça değişimi ya da revizyon kararı verilmemelidir.</p>
+            <div class="fault-sources">
+                <h3>Teknik kaynaklar</h3>
+                <ul>
+                    <li><a href="https://wiki.ross-tech.com/wiki/index.php/6-Speed_Direct_Shift_Gearbox_(DSG/02E)" target="_blank" rel="noopener noreferrer">Ross-Tech — 6 ileri DSG (02E): adaptasyon, sıcaklık ön koşulları ve VIN/PR koduyla parça eşlemesi</a></li>
+                    <li><a href="https://wiki.ross-tech.com/wiki/index.php/17100/P0716/001814" target="_blank" rel="noopener noreferrer">Ross-Tech — P0716: 02E için devir sensörü ve tesisat kontrolü</a></li>
+                    <li><a href="https://www.sae.org/standards/content/j2012_202303/" target="_blank" rel="noopener noreferrer">SAE J2012 — Genel arıza kodlarının tanımları</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Araç Markaları Bölümü -->
+    <section class="brands" id="markalar">
+        <div class="container">
+            <h2>Araç Markaları</h2>
+            <p class="brands-intro">Markaları seçerek Türkiye kaynaklarında görünen model ailelerini inceleyin. Yakıt türü yalnızca Türkiye kaynağıyla doğrulanabildiğinde benzinli, dizel, hibrit veya elektrikli grupta gösterilir; geçmiş model kayıtları eksik olabilir.</p>
+            <label class="brands-search-label" for="brand-search">Marka ara</label>
+            <input class="brands-search" id="brand-search" type="search" placeholder="Marka adı yazın..." autocomplete="off">
+            <p class="brands-count" aria-live="polite"></p>
+            <ul class="brands-list">
+                <li>Abarth</li>
+                <li>Acura</li>
+                <li>Aion</li>
+                <li>Aito</li>
+                <li>Alfa Romeo</li>
+                <li>Alpine</li>
+                <li>Arcfox</li>
+                <li>Ariel</li>
+                <li>Aston Martin</li>
+                <li>Audi</li>
+                <li>Aurus</li>
+                <li>Avatr</li>
+                <li>BAIC</li>
+                <li>Bahman</li>
+                <li>Baojun</li>
+                <li>BAW</li>
+                <li>Beijing</li>
+                <li>Bentley</li>
+                <li>Bestune</li>
+                <li>BMW</li>
+                <li>Bugatti</li>
+                <li>Buick</li>
+                <li>BYD</li>
+                <li>Cadillac</li>
+                <li>Caterham</li>
+                <li>Changan</li>
+                <li>Chery</li>
+                <li>Chevrolet</li>
+                <li>Chrysler</li>
+                <li>Citroën</li>
+                <li>Cupra</li>
+                <li>Czinger</li>
+                <li>Dacia</li>
+                <li>Daihatsu</li>
+                <li>Deepal</li>
+                <li>Denza</li>
+                <li>Dodge</li>
+                <li>Dongfeng</li>
+                <li>Dongfeng Aeolus</li>
+                <li>Donkervoort</li>
+                <li>DR Automobiles</li>
+                <li>DS Automobiles</li>
+                <li>Ebro</li>
+                <li>eπ</li>
+                <li>Evolute</li>
+                <li>Exeed</li>
+                <li>EVO</li>
+                <li>Fangchengbao</li>
+                <li>Ferrari</li>
+                <li>Fiat</li>
+                <li>Ford</li>
+                <li>Force Motors</li>
+                <li>Forthing</li>
+                <li>GAC</li>
+                <li>GAC Trumpchi</li>
+                <li>Geely</li>
+                <li>Genesis</li>
+                <li>GMC</li>
+                <li>Great Wall</li>
+                <li>Haima</li>
+                <li>Haval</li>
+                <li>Hennessey</li>
+                <li>Honda</li>
+                <li>Hongqi</li>
+                <li>Hispano Suiza</li>
+                <li>Hurtan</li>
+                <li>Hyundai</li>
+                <li>Hyptec</li>
+                <li>IM Motors</li>
+                <li>INEOS</li>
+                <li>Infiniti</li>
+                <li>Iran Khodro</li>
+                <li>iCar</li>
+                <li>Isuzu</li>
+                <li>JAC</li>
+                <li>Jaecoo</li>
+                <li>Jeep</li>
+                <li>Jetour</li>
+                <li>Kia</li>
+                <li>KGM</li>
+                <li>KMC</li>
+                <li>Karma</li>
+                <li>Kaiyi</li>
+                <li>Lada</li>
+                <li>Lamborghini</li>
+                <li>Lancia</li>
+                <li>Land Rover</li>
+                <li>Leapmotor</li>
+                <li>Lexus</li>
+                <li>Li Auto</li>
+                <li>Lincoln</li>
+                <li>Lotus</li>
+                <li>Lucid</li>
+                <li>Lynk &amp; Co</li>
+                <li>Luxeed</li>
+                <li>Luxgen</li>
+                <li>Livan</li>
+                <li>Mahindra</li>
+                <li>Maruti Suzuki</li>
+                <li>Maserati</li>
+                <li>Mazda</li>
+                <li>M-Hero</li>
+                <li>Mercedes-Benz</li>
+                <li>MG</li>
+                <li>Mini</li>
+                <li>Mitsubishi</li>
+                <li>Mitsuoka</li>
+                <li>Morgan</li>
+                <li>Moskvich</li>
+                <li>MVM</li>
+                <li>Neo Motors</li>
+                <li>Nio</li>
+                <li>Nissan</li>
+                <li>Omoda</li>
+                <li>Onvo</li>
+                <li>Opel</li>
+                <li>ORA</li>
+                <li>Pagani</li>
+                <li>Peugeot</li>
+                <li>Perodua</li>
+                <li>Pininfarina</li>
+                <li>Polestar</li>
+                <li>Porsche</li>
+                <li>Proton</li>
+                <li>Qiyuan / Nevo</li>
+                <li>Renault</li>
+                <li>Rezvani</li>
+                <li>Rimac</li>
+                <li>Rivian</li>
+                <li>Rolls-Royce</li>
+                <li>Roewe</li>
+                <li>Saleen</li>
+                <li>Saipa</li>
+                <li>SEAT</li>
+                <li>Seres</li>
+                <li>Škoda</li>
+                <li>Skyworth</li>
+                <li>Solaris</li>
+                <li>smart</li>
+                <li>Soueast</li>
+                <li>Sportequipe</li>
+                <li>SSC North America</li>
+                <li>Subaru</li>
+                <li>Suzuki</li>
+                <li>SWM</li>
+                <li>Tata</li>
+                <li>Tesla</li>
+                <li>Thai Rung</li>
+                <li>Tank</li>
+                <li>TOGG</li>
+                <li>Toyota</li>
+                <li>UAZ</li>
+                <li>Vauxhall</li>
+                <li>VinFast</li>
+                <li>Volkswagen</li>
+                <li>Volvo</li>
+                <li>Voyah</li>
+                <li>Venucia</li>
+                <li>W Motors</li>
+                <li>Wey</li>
+                <li>Wuling</li>
+                <li>Xiaomi Auto</li>
+                <li>XPeng</li>
+                <li>Yangwang</li>
+                <li>Yiwei</li>
+                <li>Yudo</li>
+                <li>Zeekr</li>
+                <li>Zhidou</li>
+            </ul>
+            <p class="brands-empty" hidden>Bu aramayla eşleşen marka bulunamadı.</p>
+            <p class="brands-note">Yakıtı Türkiye kaynağında doğrulanmayan modeller ayrı grupta gösterilir. Bu liste, her markanın 2000 sonrası bütün nesil ve motor seçeneklerini kapsayan eksiksiz bir arşiv değildir. Model yılı, motor gücü ve otomatik şanzıman eşleşmesini VIN ile üretici/ithalatçı kaynağından doğrulayın.</p>
+        </div>
+    </section>
+
+    </main>
+
+    <script src="vehicle-model-history.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
