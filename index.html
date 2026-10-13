@@ -483,7 +483,35 @@
 
     </main>
 
+    <div class="site-assistant">
+        <section class="assistant-panel" id="site-assistant-panel" aria-labelledby="assistant-title" aria-hidden="true" hidden>
+            <div class="assistant-header">
+                <div>
+                    <h2 id="assistant-title">Hızlı Ulaşım Asistanı</h2>
+                    <p>Site içindeki bilgi ve bölümleri bulur.</p>
+                </div>
+                <button class="assistant-close" type="button" aria-label="Asistanı kapat">×</button>
+            </div>
+            <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <div class="assistant-suggestions" aria-label="Örnek sorular">
+                <button type="button" data-assistant-query="CVT şanzıman arızaları">CVT arızaları</button>
+                <button type="button" data-assistant-query="Audi modelleri">Audi modelleri</button>
+                <button type="button" data-assistant-query="Şanzıman yağı bakımı">Yağ bakımı</button>
+            </div>
+            <form class="assistant-form">
+                <label class="sr-only" for="assistant-query">Asistana sorun</label>
+                <input id="assistant-query" type="search" placeholder="Örn. DSG titreme, P0716, Audi" autocomplete="off" required>
+                <button type="submit">Bul</button>
+            </form>
+            <p class="assistant-disclaimer">Asistan site içeriğinde arama yapar; araç teşhisi veya kişiye özel servis önerisi vermez.</p>
+        </section>
+        <button class="assistant-launcher" type="button" aria-expanded="false" aria-controls="site-assistant-panel">
+            <span aria-hidden="true">✦</span> Asistan
+        </button>
+    </div>
+
     <script src="vehicle-model-history.js"></script>
     <script src="script.js"></script>
+    <script src="site-assistant.js"></script>
 </body>
 </html>
