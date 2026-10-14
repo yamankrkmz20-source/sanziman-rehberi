@@ -487,23 +487,24 @@
         <section class="assistant-panel" id="site-assistant-panel" aria-labelledby="assistant-title" aria-hidden="true" hidden>
             <div class="assistant-header">
                 <div>
-                    <h2 id="assistant-title">Hızlı Ulaşım Asistanı</h2>
-                    <p>Site içindeki bilgi ve bölümleri bulur.</p>
+                    <h2 id="assistant-title">Akıllı Şanzıman Asistanı</h2>
+                    <p>Sorularını site rehberlerine göre yanıtlar.</p>
                 </div>
                 <button class="assistant-close" type="button" aria-label="Asistanı kapat">×</button>
             </div>
             <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
             <div class="assistant-suggestions" aria-label="Örnek sorular">
-                <button type="button" data-assistant-query="CVT şanzıman arızaları">CVT arızaları</button>
-                <button type="button" data-assistant-query="Audi modelleri">Audi modelleri</button>
-                <button type="button" data-assistant-query="Şanzıman yağı bakımı">Yağ bakımı</button>
+                <button type="button" data-assistant-query="CVT şanzıman nedir?">CVT nedir?</button>
+                <button type="button" data-assistant-query="DSG titreme neden olur?">DSG titreme</button>
+                <button type="button" data-assistant-query="P0716 arıza kodu ne demek?">P0716 kodu</button>
+                <button type="button" data-assistant-query="Şanzıman yağı ne zaman değişir?">Yağ bakımı</button>
             </div>
             <form class="assistant-form">
                 <label class="sr-only" for="assistant-query">Asistana sorun</label>
-                <input id="assistant-query" type="search" placeholder="Örn. DSG titreme, P0716, Audi" autocomplete="off" required>
-                <button type="submit">Bul</button>
+                <input id="assistant-query" type="search" placeholder="Şanzımanla ilgili sorunu yaz..." autocomplete="off" required>
+                <button type="submit">Sor</button>
             </form>
-            <p class="assistant-disclaimer">Asistan site içeriğinde arama yapar; araç teşhisi veya kişiye özel servis önerisi vermez.</p>
+            <p class="assistant-disclaimer">Yanıtlar sitedeki rehberlerden alınır; kesin arıza teşhisi değildir. Soruların harici bir yapay zekâ servisine gönderilmez.</p>
         </section>
         <button class="assistant-launcher" type="button" aria-expanded="false" aria-controls="site-assistant-panel">
             <span aria-hidden="true">✦</span> Asistan

@@ -11,17 +11,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const sections = Array.from(stage.children).filter(element => element.tagName === 'SECTION' && element.id);
     const navLinks = document.querySelectorAll('.nav-link');
+    const stopWords = new Set([
+        'acaba', 'ama', 'bir', 'bu', 'da', 'de', 'diye', 'icin', 'ile', 'mi', 'mu', 'ne',
+        'nasil', 'neden', 'nerede', 'olan', 'olarak', 'olur', 've', 'veya', 'yap', 'yapar',
+        'yapiyor', 'yaparim', 'nedir', 'demek', 'anlami', 'hakkinda', 'sorun', 'sorunu'
+    ]);
+    const synonyms = [
+        ['titreme', 'titriyor', 'silkeleme', 'sarsinti', 'titresim'],
+        ['vuruntu', 'sertlik', 'sert', 'darbe'],
+        ['kayma', 'kacirma'],
+        ['gecikme', 'gecikiyor', 'gecis', 'gecmiyor'],
+        ['yag', 'atf', 'sivi'],
+        ['bakim', 'servis'],
+        ['degisim', 'degisir', 'degistirme', 'degistirilmeli'],
+        ['zaman', 'aralik', 'periyodik'],
+        ['ariza', 'hata', 'sorun', 'uyari'],
+        ['guc', 'performans', 'hizlanma', 'cekis'],
+        ['ses', 'ugultu', 'gurultu'],
+        ['isitma', 'isinma', 'sicaklik', 'hararet']
+    ];
 
     function normalize(value) {
         return value.toLocaleLowerCase('tr-TR')
-            .replace(/[ç]/g, 'c')
-            .replace(/[ğ]/g, 'g')
-            .replace(/[ıİ]/g, 'i')
-            .replace(/[ö]/g, 'o')
-            .replace(/[ş]/g, 's')
-            .replace(/[ü]/g, 'u')
+            .replace(/ı/g, 'i')
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
             .replace(/[^a-z0-9]+/g, ' ')
             .trim();
+    }
+
+    function tokenize(value) {
+        return normalize(value).split(/\s+/).filter(token => token.length > 1 && !stopWords.has(token));
+    }
+
+    function tokensMatch(first, second) {
+        if (first === second) return true;
+        return synonyms.some(group => group.includes(first) && group.includes(second));
+    }
+
+    function scoreText(queryTokens, text) {
+        const textTokens = tokenize(text);
+        if (!queryTokens.length || !textTokens.length) return 0;
+        let matched = 0;
+        queryTokens.forEach(token => {
+            if (textTokens.some(candidate => tokensMatch(token, candidate))) matched += 1;
+        });
+        return matched / queryTokens.length;
     }
 
     function addMessage(text, isUser) {
@@ -29,6 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
         message.className = `assistant-message${isUser ? ' assistant-message-user' : ''}`;
         message.textContent = text;
         messages.append(message);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function addAction(label, action) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'assistant-action';
+        button.textContent = label;
+        button.addEventListener('click', function() {
+            action();
+            setOpen(false);
+            launcher.focus();
+        });
+        messages.append(button);
         messages.scrollTop = messages.scrollHeight;
     }
 
@@ -45,130 +94,211 @@ document.addEventListener('DOMContentLoaded', function() {
         stage.scrollTop = 0;
     }
 
-    function addAction(label, action) {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'assistant-action';
-        button.textContent = label;
-        button.addEventListener('click', function() {
-            action();
-            launcher.setAttribute('aria-expanded', 'false');
-            panel.setAttribute('aria-hidden', 'true');
-            panel.hidden = true;
-            launcher.focus();
+    function makeKnowledgeBase() {
+        const documents = [];
+        document.querySelectorAll('.blog-card').forEach(card => {
+            const title = card.querySelector('h3')?.textContent.trim();
+            if (!title) return;
+            const summary = Array.from(card.children)
+                .find(child => child.tagName === 'P')?.textContent.trim();
+            const details = card.querySelector('.blog-detail');
+            const parts = details
+                ? Array.from(details.querySelectorAll('p')).map(paragraph => paragraph.textContent.trim()).filter(Boolean)
+                : [];
+            const subheadings = details
+                ? Array.from(details.querySelectorAll('h4')).map(heading => heading.textContent.trim())
+                : [];
+            documents.push({
+                kind: 'blog',
+                sectionId: 'blog',
+                element: card,
+                title,
+                content: [summary, ...subheadings, ...parts].filter(Boolean).join(' '),
+                parts: [...subheadings, ...parts].filter(Boolean)
+            });
         });
-        messages.append(button);
-        messages.scrollTop = messages.scrollHeight;
+
+        document.querySelectorAll('.fault-table tbody tr').forEach(row => {
+            const cells = Array.from(row.children);
+            const code = cells[0]?.textContent.trim();
+            const meaning = cells[1]?.textContent.trim();
+            const checks = cells[2]?.textContent.trim();
+            if (!code || !meaning) return;
+            documents.push({
+                kind: 'code',
+                sectionId: 'ariza-kodlari',
+                title: `${code} — ${meaning}`,
+                code,
+                content: [meaning, checks].filter(Boolean).join(' '),
+                parts: [meaning, checks].filter(Boolean)
+            });
+        });
+
+        document.querySelectorAll('.transmission-fault-card').forEach(card => {
+            const type = card.querySelector('h3')?.textContent.trim() || '';
+            const examples = card.querySelector('.transmission-fault-examples')?.textContent.trim() || '';
+            card.querySelectorAll('.transmission-fault-item').forEach(item => {
+                const symptom = item.querySelector('h4')?.textContent.trim().replace(/^\d+\.\s*/, '');
+                if (!symptom) return;
+                const parts = Array.from(item.querySelectorAll('p')).map(paragraph => paragraph.textContent.trim()).filter(Boolean);
+                documents.push({
+                    kind: 'fault',
+                    sectionId: 'sanziman-arizalari',
+                    element: card,
+                    type,
+                    symptom,
+                    title: `${type} — ${symptom}`,
+                    content: [examples, ...parts].join(' '),
+                    parts
+                });
+            });
+        });
+
+        document.querySelectorAll('.kategori-item').forEach(item => {
+            const title = item.querySelector('h3')?.textContent.trim();
+            const content = item.textContent.trim();
+            if (!title) return;
+            documents.push({
+                kind: 'category',
+                sectionId: 'kategoriler',
+                title,
+                content,
+                parts: [content]
+            });
+        });
+        return documents;
     }
 
-    function submitQuery(rawQuery) {
+    function rankDocuments(query, documents) {
+        const queryTokens = tokenize(query);
+        return documents.map(document => {
+            const titleScore = scoreText(queryTokens, document.title);
+            const contentScore = scoreText(queryTokens, document.content);
+            const phraseScore = normalize(document.title).includes(normalize(query)) ? 1 : 0;
+            return {
+                document,
+                score: titleScore * 0.65 + contentScore * 0.3 + phraseScore * 0.05,
+                coverage: Math.max(titleScore, contentScore)
+            };
+        }).filter(result => result.coverage > 0)
+            .sort((first, second) => second.score - first.score);
+    }
+
+    function bestAnswerParts(query, document, limit = 2) {
+        const queryTokens = tokenize(query);
+        return document.parts
+            .map(part => ({ part, score: scoreText(queryTokens, part) }))
+            .filter(result => result.score > 0)
+            .sort((first, second) => second.score - first.score)
+            .slice(0, limit)
+            .map(result => result.part);
+    }
+
+    function findBrand(query) {
+        const normalizedQuery = normalize(query);
+        return Array.from(document.querySelectorAll('.brands-list .brand-toggle'))
+            .map(button => ({ button, name: button.textContent.replace(/[+\-−]\s*$/, '').trim() }))
+            .filter(brand => normalize(brand.name).length >= 3 && normalizedQuery.includes(normalize(brand.name)))
+            .sort((first, second) => normalize(second.name).length - normalize(first.name).length)[0];
+    }
+
+    function openDocument(doc) {
+        if (doc.kind === 'blog') {
+            showSection(doc.sectionId);
+            const readMore = doc.element.querySelector('.read-more');
+            if (readMore?.getAttribute('aria-expanded') !== 'true') readMore?.click();
+            doc.element.scrollIntoView({ block: 'start', behavior: 'smooth' });
+            return;
+        }
+        if (doc.kind === 'code') {
+            const search = document.querySelector('.fault-search');
+            if (search) {
+                search.value = doc.code;
+                search.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        } else if (doc.kind === 'fault') {
+            const type = document.getElementById('transmission-fault-type');
+            const option = type && Array.from(type.options).find(item => normalize(item.textContent) === normalize(doc.type));
+            if (type && option) {
+                type.value = option.value;
+                type.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            const search = document.getElementById('transmission-fault-search');
+            if (search) {
+                search.value = doc.symptom;
+                search.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        }
+        showSection(doc.sectionId);
+        stage.scrollTop = 0;
+    }
+
+    function answerQuery(rawQuery) {
         const query = rawQuery.trim();
         if (!query) return;
         addMessage(query, true);
 
-        const normalizedQuery = normalize(query);
         const code = query.toUpperCase().match(/\bP\d{4}\b/);
+        const documents = makeKnowledgeBase();
         if (code) {
-            addMessage(`${code[0]} kodu için Arıza Kodları bölümündeki eşleşmeleri açabilirim. Kod açıklaması tek başına parça değişimi veya revizyon teşhisi değildir.`, false);
-            addAction('Arıza kodlarında ara', function() {
-                const search = document.querySelector('.fault-search');
-                if (search) {
-                    search.value = code[0];
-                    search.dispatchEvent(new Event('input', { bubbles: true }));
-                }
-                showSection('ariza-kodlari');
-            });
-            return;
+            const codeResult = documents.find(item => item.kind === 'code' && item.code === code[0]);
+            if (codeResult) {
+                addMessage(`${codeResult.code}: ${codeResult.parts[0]} ${codeResult.parts[1] || ''} Kodun açıklaması tek başına arızalı parçayı kesinleştirmez.`, false);
+                addAction('Kod bilgisini ve kontrolleri aç', function() {
+                    openDocument(codeResult);
+                });
+                return;
+            }
         }
 
-        const brandButtons = Array.from(document.querySelectorAll('.brands-list .brand-toggle'));
-        const matchedBrand = brandButtons
-            .map(button => ({ button, name: button.textContent.trim() }))
-            .filter(brand => normalize(brand.name).length >= 3 && normalizedQuery.includes(normalize(brand.name)))
-            .sort((first, second) => normalize(second.name).length - normalize(first.name).length)[0];
-        if (matchedBrand) {
-            addMessage(`${matchedBrand.name} marka modellerini ve doğrulanmış yakıt gruplarını açabilirim.`, false);
-            addAction(`${matchedBrand.name} modellerini aç`, function() {
+        const normalizedQuery = normalize(query);
+        const brand = findBrand(query);
+        const asksAboutModels = ['marka', 'model', 'arac'].some(term => normalizedQuery.includes(term));
+        if (brand && asksAboutModels) {
+            addMessage(`${brand.name} için sitedeki Türkiye kaynaklı model ve yakıt bilgilerini açabilirim. Yakıtı doğrulanmayan modeller ayrıca gösterilir.`, false);
+            addAction(`${brand.name} modellerini aç`, function() {
                 const search = document.getElementById('brand-search');
                 if (search) {
-                    search.value = matchedBrand.name;
+                    search.value = brand.name;
                     search.dispatchEvent(new Event('input', { bubbles: true }));
                 }
                 showSection('markalar');
-                if (matchedBrand.button.getAttribute('aria-expanded') !== 'true') matchedBrand.button.click();
+                if (brand.button.getAttribute('aria-expanded') !== 'true') brand.button.click();
             });
             return;
         }
 
-        const guideTerms = [
-            { terms: ['yag', 'bakim', 'degisim araligi'], title: 'Şanzıman Yağı Ne Zaman Değişir?' },
-            { terms: ['yari otomatik', 'tam otomatik', 'otomatik fark'], title: 'Otomatik ve Yarı Otomatik Şanzıman Farkları' },
-            { terms: ['ne ise yarar', 'gorevi', 'sanziman nedir'], title: 'Şanzıman Ne İşe Yarar?' },
-            { terms: ['belirti', 'ariza nasil anlasilir', 'ariza belirtisi'], title: 'Şanzıman Arızası Nasıl Anlaşılır?' },
-            { terms: ['cvt nasil calisir', 'cvt calisma'], title: 'CVT Şanzıman Nasıl Çalışır?' },
-            { terms: ['cift kavrama', 'dsg nasil calisir', 'dct nasil calisir'], title: 'Çift Kavramalı Şanzıman Nasıl Çalışır?' }
-        ];
-        const guide = guideTerms.find(item => item.terms.some(term => normalizedQuery.includes(term)));
-        if (guide) {
-            addMessage(`Rehberlerde “${guide.title}” açıklamasını buldum.`, false);
-            addAction('İlgili rehberi aç', function() {
-                showSection('blog');
-                const card = Array.from(document.querySelectorAll('.blog-card'))
-                    .find(element => normalize(element.querySelector('h3')?.textContent || '') === normalize(guide.title));
-                const readMore = card?.querySelector('.read-more');
-                if (readMore && readMore.getAttribute('aria-expanded') !== 'true') readMore.click();
+        const ranked = rankDocuments(query, documents);
+        const best = ranked[0];
+        if (best && best.coverage >= 0.34) {
+            const answerParts = bestAnswerParts(query, best.document, best.document.kind === 'fault' ? 3 : 2);
+            if (best.document.kind === 'fault') {
+                addMessage(`${best.document.type} — ${best.document.symptom}\n${answerParts.join('\n')}\n\nBunlar olası nedenlerdir; kesin teşhis için araç ve şanzıman koduna uygun kontrol gerekir.`, false);
+            } else if (best.document.kind === 'code') {
+                addMessage(`${best.document.code}: ${best.document.parts[0]} ${best.document.parts[1] || ''} Kodun açıklaması tek başına arızalı parçayı kesinleştirmez.`, false);
+            } else {
+                addMessage(`${best.document.title}\n${answerParts.join('\n') || best.document.content}`, false);
+            }
+            addAction('Kaynak bilgiyi sitede aç', function() {
+                openDocument(best.document);
             });
             return;
         }
 
-        const faultTerms = ['titreme', 'silkeleme', 'vuruntu', 'kayma', 'gecis', 'vites secmeme', 'acil mod', 'ugultu', 'isinma', 'cvt', 'dsg', 'dct', 'sanziman ariza', 'ariza rehberi'];
-        if (faultTerms.some(term => normalizedQuery.includes(term))) {
-            addMessage('Belirtiyi ve şanzıman türünü arıza rehberinde arayabilirim. Sonuçlar olası nedenleri ve kontrol sırasını gösterir; kesin teşhis yerine geçmez.', false);
-            addAction('Şanzıman arızalarında ara', function() {
-                const search = document.getElementById('transmission-fault-search');
-                const type = document.getElementById('transmission-fault-type');
-                let typeQuery = '';
-                if (normalizedQuery.includes('ecvt') || normalizedQuery.includes('e cvt')) typeQuery = 'ecvt';
-                else if (normalizedQuery.includes('cvt')) typeQuery = 'kayis zincirli cvt';
-                else if (normalizedQuery.includes('dq200')) typeQuery = 'dq200';
-                else if (normalizedQuery.includes('dq250') || normalizedQuery.includes('dq381')) typeQuery = 'dq250';
-                else if (['dct', 'edc', 'pdk', 'tct', 'powershift'].some(term => normalizedQuery.includes(term))) typeQuery = 'diger cift kavramali';
-                if (type && typeQuery) {
-                    const option = Array.from(type.options).find(item => normalize(item.textContent).includes(typeQuery));
-                    if (option) {
-                        type.value = option.value;
-                        type.dispatchEvent(new Event('change', { bubbles: true }));
-                    }
-                }
+        if (brand) {
+            addMessage(`${brand.name} marka sayfasını açabilirim. Belirli bir model arıyorsan marka ve “modeller” kelimesiyle birlikte yaz.`, false);
+            addAction(`${brand.name} markasını bul`, function() {
+                const search = document.getElementById('brand-search');
                 if (search) {
-                    const symptom = ['titreme', 'silkeleme', 'vuruntu', 'kayma', 'gecis', 'ugultu', 'isinma']
-                        .find(term => normalizedQuery.includes(term));
-                    const hasSpecificType = Boolean(typeQuery);
-                    search.value = symptom || (hasSpecificType ? '' : query);
+                    search.value = brand.name;
                     search.dispatchEvent(new Event('input', { bubbles: true }));
                 }
-                showSection('sanziman-arizalari');
+                showSection('markalar');
             });
             return;
         }
 
-        const sectionIntents = [
-            { terms: ['ana sayfa', 'anasayfa', 'baslangic'], id: 'home', label: 'Ana Sayfa' },
-            { terms: ['rehber', 'yazi', 'konu anlat'], id: 'blog', label: 'Rehberler' },
-            { terms: ['konular', 'sanziman turleri', 'kategori'], id: 'kategoriler', label: 'Konular' },
-            { terms: ['ariza kodu', 'obd', 'dtc', 'hata kodu'], id: 'ariza-kodlari', label: 'Arıza Kodları' },
-            { terms: ['marka', 'model', 'arac'], id: 'markalar', label: 'Araç Markaları' }
-        ];
-        const section = sectionIntents.find(item => item.terms.some(term => normalizedQuery.includes(term)));
-        if (section) {
-            addMessage(`${section.label} bölümünü açabilirim.`, false);
-            addAction(`${section.label} bölümüne git`, function() {
-                showSection(section.id);
-            });
-            return;
-        }
-
-        addMessage('Aradığını tam eşleştiremedim. Bir şanzıman türü veya belirti (ör. “CVT uğultu”), arıza kodu (ör. “P0716”), marka/model (ör. “Audi”) ya da bakım konusu yazabilirsin.', false);
+        addMessage('Bu soruya sitedeki içeriklerde yeterli eşleşme bulamadım. Örneğin “CVT nedir?”, “DSG titreme neden olur?”, bir arıza kodu (P0716) veya marka-model sorabilirsin.', false);
     }
 
     function setOpen(isOpen) {
@@ -187,12 +317,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-        submitQuery(input.value);
+        answerQuery(input.value);
         input.value = '';
     });
     suggestions.forEach(button => {
         button.addEventListener('click', function() {
-            submitQuery(button.getAttribute('data-assistant-query') || '');
+            answerQuery(button.getAttribute('data-assistant-query') || '');
         });
     });
     document.addEventListener('keydown', function(event) {
@@ -202,5 +332,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    addMessage('Merhaba! Sitede aradığın bölüm veya konuyu yaz; sana doğrudan bağlantısını bulayım.', false);
+    addMessage('Merhaba! Şanzımanla ilgili sorunu kendi cümlelerinle yaz. Sitedeki rehberlerden yanıt bulup kaynağını açabilirim.', false);
 });

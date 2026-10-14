@@ -1,0 +1,123 @@
+SANZIMAN REHBERI - PROJE KAYIT DOSYASI
+Guncelleme: 14 Ekim 2026
+
+INTERNETTE YAYIN
+- Site GitHub Pages ile herkese acik olarak yayinlandi:
+  https://yamankrkmz20-source.github.io/sanziman-rehberi/
+- Kaynak depo (public): https://github.com/yamankrkmz20-source/sanziman-rehberi
+- index.html, style.css, script.js ve vehicle-model-history.js GitHub'a yuklendi.
+- GitHub Pages main dalinin kok dizininden yayin yapar; yeni yerel degisiklikler
+  arkadaslarin gorebilmesi icin public depoya da yuklenmelidir.
+- GitHub Actions Pages build/deploy islemi basarili; canli site tarayicida ve
+  ariza bolumu arama/filtre davranisiyla kontrol edildi.
+- Hizli ulasim asistani 14 Ekim 2026'da public depoya yuklendi.
+- Pages build/deploy basarili; canli site asistanla acilip kontrol edildi.
+- Asistanin son gelistirmesi 14 Ekim 2026'da kullanicinin istegiyle GitHub'a
+  yuklendi ve GitHub Pages uzerinde test edildi.
+
+YEDEK KAYDI
+- Son Masaustu ZIP yedegi: ../Sanziman-Rehberi-Kayit-2026-10-14.zip
+- Bu arsiv 14 Ekim gunduzundeki dosyalari icerir; en son yerel asistan
+  gelistirmelerini kapsamaz. Bu gelistirmeler icin yeni ZIP alinmamistir.
+
+PROJEYI YENIDEN ACMA
+1. VS Code'u ac.
+2. Bu klasordeki Sanziman-Rehberi.code-workspace dosyasini ac.
+3. Siteyi gormek icin index.html dosyasini tarayicida ac.
+
+PROJE DOSYALARI
+- index.html: Sayfa yapisi, rehber kartlari, ariza kodlari ve marka bolumu.
+- script.js: Marka arama/filtreleme, marka model acilimlari ve rehber kartlari.
+- site-assistant.js: Site icinde arama yapan, bolum ve iceriklere yonlendiren
+  yerel hizli ulasim asistani.
+- vehicle-model-history.js: Turkiye kaynaklariyla desteklenen model/yakit gruplari ve kaynak baglantilari.
+- style.css: Tema, disli gorselli renkli arka plan, kartlar ve mobil gorunum.
+- Sanziman-Rehberi.code-workspace: VS Code calisma alani.
+- chat.txt: Proje klasorundeki mevcut sohbet/kayit dosyasi.
+
+SON CALISMALAR
+- Alt bolumdeki footer (hakkimizda/yasal baglantilar ve telif satiri) kaldirildi.
+  Disli arka plan gorseli atfi da kullanici istegiyle gorunen arayuzden kaldirildi.
+- Site bolum secimli gorunume alindi: ust menuden secilen ana bolum gosterilir,
+  diger ana bolumler gizlenir. Sayfanin govdesi kaymaz; uzun icerik varsa
+  yalniz secili bolumun icerik alani kayar ve kaydirma baska bolume gecirmez.
+  Hero bolumundeki rehber dugmesi Rehberler bolumunu acar.
+- Audi dahil marka accordion'lari, Turkiye marka sayfalarinda listelenen model
+  ailelerini yakit gruplariyla gosterir. Yakiti yerel kaynakta teyit edilmeyen
+  modeller ayri bir grupta kalir; varsayimla benzin/dizel veya elektrikli diye
+  etiketlenmez.
+- Araç katalogu bolumu, gezinme baglantisi, katalog JavaScript'i ve katalog
+  CSS'i sonradan kaldirildi; Araç Markalari arama/listesi korunuyor.
+- Kullanici kapsami Turkiye'de kaynakla dogrulanabilen kayitlarla sinirlandirmayi
+  secti. Bu nedenle tarihsel model/yakit kayitlari eksik olabilir; motor gucu ve
+  sanziman ayrintisi Turkiye kaynagi dogrulamiyorsa gosterilmez.
+- Ortak marka-yakit gruplama gorunumu masaustunde yan yana kolonlar, mobilde tek
+  sutun kullanir. Marka sayfasi modeli gosterip yakiti gostermiyorsa model
+  "yakiti dogrulanmadi" grubuna eklenir. Kaynak baglantilari marka aciklamasinda
+  bulunur.
+- Ana sayfadaki alti rehber kartina ayrintili ve konuya ozel aciklamalar eklendi:
+  sanzimanin gorevi, otomatik-yari otomatik farklari, yag bakimi, ariza
+  belirtileri, CVT ve cift kavramali sanzimanlar. Yari otomatik teriminin AMT
+  ile DCT/DSG adlandirmalarinda farkli kullanilabildigi aciklandi.
+- Kartlardaki "Devamini Oku" butonu aciklamayi gosterir; acikken
+  "Daha Az Goster" olur ve tekrar basildiginda aciklamayi kapatir. Baska bir
+  rehber acilinca daha once acik olan rehber otomatik kapanir.
+- Sanziman turune gore filtrelenebilir ariza rehberi eklendi. DSG, diger
+  cift kavramalilar, tork konvertorlu otomatik, CVT, hibrit e-CVT ve DHT
+  ile elektrikli redüksiyon sistemleri kapsanir.
+- Sanziman arizalari bolumu okunabilirlik icin yeniden duzenlendi: arama ve
+  tur filtresi paneli, sirali numarali sanziman kartlari ve kart icindeki
+  numarali belirti basliklari eklendi. Belirti, olasi nedenler ve kontrol
+  adimlari ayri panellerde sunulur; masaustunde iki kolon, mobilde tek kolon.
+- 10 Ekim 2026 kaydi: ariza bolumunun masaustu/mobil okunabilirligi, tur
+  filtresi ve arama akisi kontrol edildi; proje dosyalarinin ZIP yedegi
+  Sanziman-Rehberi-Kayit-2026-10-10.zip adiyla alindi.
+- Manuel sanzimanla ilgili ana sayfa aciklamalari, kategori karti, ariza
+  rehberi basliklari ve katalog metinleri kaldirildi. Istenen son duzenlemede
+  manuel-otomatik karsilastirmasi yerine otomatik-yari otomatik rehberi eklendi.
+- Golf aramasinda DQ200 ve DQ250/DQ381 aileleri gosterilir; kesin sanziman
+  kodunun model, motor, yil ve VIN ile dogrulanmasi gerektigi belirtilir.
+- Ariza belirtilerinin tek basina parca degisimi veya revizyon karari
+  vermeyecegi ve uygun servis/uretici prosedurunun izlenmesi gerektigi
+  aciklanir.
+- Katalog ve marka model/otomatik sanziman bilgileri onceki calismalardir;
+  katalog arayuzu sonradan kaldirildi. OBD ariza kodlari ve lisans atifli
+  disli arka plan korunur.
+- Iletisim/newsletter/sosyal icerikler ve katalogdaki 2D arac fotograflari
+  onceki istekler dogrultusunda kaldirilmistir; BMW 1 Serisi 3D gorunumu
+  korunmustur.
+
+KONTROL DURUMU
+- index.html, script.js, style.css ve vehicle-model-history.js dosyalarinda
+  editor hata kontrolu temiz; JavaScript soz dizimi dogrulandi.
+- Rehber kartinin acilip kapanmasi tarayicida kontrol edildi.
+- Mobil gorunumde yatay tasma olmadigi kontrol edildi.
+- DSG/Golf aramasi ve sanziman turu filtresi tarayicida kontrol edildi.
+- Audi, Daihatsu, Honda ve Mitsubishi marka/yakit gruplari, kaynak
+  baglantilari, marka aramasi, dogrulanmayan marka mesaji ve mobil tek-sutun
+  gorunumu tarayicida test edildi.
+- Sanziman arizalari bolumunde tum sekiz kartin sirasi, tur filtresi, CVT
+  aramasi ve mobil gorunum/yatay tasma tarayicida kontrol edildi.
+- Hizli ulasim asistani eklendi. Asistan; ariza kodu, belirti/sanziman turu,
+  marka/model ve rehber konusu icin bolumu/aciklamayi hizlica bulur. Dis bir
+  yapay zeka servisine veya API anahtarina baglanmaz; site iceriginde yerel
+  anahtar kelime eslestirmesi yapar. Aracin kesin teshisi yerine gecmedigi
+  panelde belirtilir.
+- Asistanin CVT ariza rehberine tur filtresiyle gitmesi, Audi aramasinda
+  markayi acmasi, yag bakimi rehberini genisletmesi, P0716 kodunu filtrelemesi
+  ve mobilde yatay tasma olusturmamasi tarayicida kontrol edildi.
+- Asistan GitHub Pages canli sitesinde de CVT ariza bolumune dogru tur
+  filtresiyle yonlendirilerek dogrulandi.
+- Asistan site icerigindeki rehber, ariza kodu tablosu ve tur bazli ariza
+  kartlarini puanlayarak dogal dil sorularina kaynakli yanit verecek sekilde
+  genisletildi. Turkce karakter/kelime esleme, benzer belirti terimleri ve
+  ilgili kaynak bolumunu acma eklendi. Harici AI servisine soru gonderilmez.
+- Bu gelistirme yerelde CVT, DSG titreme, P0716 ve yag bakimi ornekleriyle,
+  mobil yatay tasma ve Escape ile panel kapatma davranisiyla dogrulandi.
+- Son asistan surumu GitHub Pages uzerine yuklendi; canli sitede DSG titreme
+  yaniti ve ilgili filtrelenmis kaynak karti dogrulandi.
+
+SONRAKI ADIM
+Kaldigin yerden devam etmek icin VS Code'da Sanziman-Rehberi.code-workspace
+dosyasini ac. Dosyalar bu klasorde kayitlidir; bu metin dosyasi proje durumu
+ve son calismalarin devam notudur.
